@@ -61,5 +61,5 @@ $(document).ready(function() {
 	}
 
 	// Update previous moods-entry and redirect??
-	function updateEntry(moodEntry) {}
+	// function updateEntry(moodEntry) {}
 });
