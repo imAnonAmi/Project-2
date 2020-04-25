@@ -1,5 +1,4 @@
 module.exports = function(sequelize, DataTypes) {
-  
 	const MoodEntry = sequelize.define("MoodEntry", {
 		// create database model
         date: {
