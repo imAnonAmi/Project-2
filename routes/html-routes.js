@@ -21,9 +21,12 @@ module.exports = function(app) {
 		res.sendFile(path.join(__dirname, "../public/login.html"));
 	});
 
-	// Here we've add our isAuthenticated middleware to this route.
-	// If a user who is not logged in tries to access this route they will be redirected to the signup page
+	// Routes that access pages only available to regustered users are protected with isAuthenticated middleware
+	// If a user who is not logged in tries to access these routes they will be redirected to the signup page
 	app.get("/moods-entry", isAuthenticated, function(req, res) {
 		res.sendFile(path.join(__dirname, "../public/moods-entry.html"));
+	});
+	app.get("/moods-view", isAuthenticated, function(req, res) {
+		res.sendFile(path.join(__dirname, "../public/moods-view.html"));
 	});
 };
