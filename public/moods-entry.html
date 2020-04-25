@@ -1,45 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Passport Authentication</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" />
-		<link href="stylesheets/style.css" rel="stylesheet" />
-	</head>
 
-	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/logout">
-						Logout
-					</a>
-				</div>
+<head>
+	<title>Passport Authentication</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+	<script src="js/semantic.min.js"></script>
+	<link rel='stylesheet prefetch'
+		href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+	<script src="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.js"></script>
+	<link href="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.css" rel="stylesheet" />
+	<link
+		href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+		rel="stylesheet" type="text/css" />
+	<script
+		src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+	<link href="stylesheets/style.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/moods-entry.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/logout">
+					Logout
+				</a>
 			</div>
-		</nav>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<!-- User email is added here by moods-entry.js -->
-					<h2>Welcome <span class="member-name"></span></h2>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<!-- User email is added here by moods-entry.js -->
+				<h2>Welcome <span class="member-name"></span></h2>
 
-					<!-- Mood entry form needs:
-						id="mood-form"
-						submit button
-						include input field type="hidden" with id="author" - value will be added by .js
+				<div class="ui form" id="mood-form">
+					<input type="hidden" id="author">
+
+					<div class="ui calendar" id="example1">
+						<div class="ui input left icon">
+							<i class="calendar icon"></i>
+							<input type="text" id="entry-date" placeholder="Date/Time">
+						</div>
+					</div>
+					<br />
+					<div class="ui checkbox">
+						<input type="checkbox" name="example">
+						<label><img class="ui avatar image" src="/images/wireframe/square-image.png"></label>
+					</div>
+
+					<div class="ui fluid input" id="journal">
+						<input type="text" placeholder="Did anything cause this feeling?">
+					</div>
+					<div class="ui segment">
+						<div class="ui labeled range" id="range-0">
+							<ul class="labels">
+								<li class="label">low</li>
+								<li class="label">med</li>
+								<li class="label">high</li>
+							</ul>
+						</div>
+					</div>
+					<button class="ui primary button">
+						Save
+					</button>
+				</div>
+				<!-- Mood entry form needs:
+					
+					
+					
 						date id="entry-date"
-						text area id="journal"
+					
 						each general emotion as a fieldset class="emotion" with:
 							checkbox type="checkbox"
 							label of general emotion (happy, sad, etc...)
 							slider - based on: https://codepen.io/trevanhetzel/pen/rOVrGK
 							list of slider describers (not displayed) where class="active" for the describer at the slider current position -->
-				</div>
 			</div>
 		</div>
+	</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/members.js"></script>
-	</body>
+</body>
+
 </html>
