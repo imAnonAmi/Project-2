@@ -1,0 +1,4 @@
+models/index.js
+node_modules
+public/js/semantic.min.js
+public/stylesheets/semantic.min.css
