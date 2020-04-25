@@ -1,13 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	// When page opens
 	// get info on user that is logged in and add to page
-	$.get("/api/user_data").then(function(data) {
+	$('#example1').calendar();
+
+
+	$.get("/api/user_data").then(function (data) {
 		$(".member-name").text(data.email);
 		$("#author").val(data.id);
 	});
 
 	// Event listener for submitting moods entry
-	$("#mood-form").on("submit", handleFormSubmit());
+	$("#mood-form").on("submit", handleFormSubmit);
 
 	// When mood entry form is submitted
 	function handleFormSubmit(event) {
@@ -55,11 +58,38 @@ $(document).ready(function() {
 
 	// Submit new moods-entry and redirect to moods-view page
 	function submitEntry(moodEntry) {
-		$.post("/api/moods-entry", moodEntry, function() {
+		$.post("/api/moods-entry", moodEntry, function () {
 			window.location.href = "/moods-view";
 		});
 	}
 
 	// Update previous moods-entry and redirect??
 	// function updateEntry(moodEntry) {}
+
+	//slider nightmare
+	$(".ui.modal").modal("show");
+  // Semantic UI Range
+  $('.ui.range').range({
+    min: 0,
+    max: 10,
+    start: 10,
+    step: 1,
+  });
+
+  $('#smooth').range({
+    min: 0,
+    max: 10,
+    start: 5,
+    smooth: true,
+  });
+
+  $('#range-0').range({
+    min: 0,
+    max: 10,
+    start: 5,
+    labelType: 'letter'
+  });
+
+
+
 });
