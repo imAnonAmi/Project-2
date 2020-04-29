@@ -36,7 +36,29 @@ $(document).ready(function() {
 	function moodJournal(entries) {
 		entries.forEach((entry) => {
 			// Create row or card for each entry
-			console.log(entry);
+
+		console.log(entry);
+
+		let entryUserId = entry.UserId;
+		let entryDate = entry.date;
+		let entryId = entry.id;
+		let entryJournal = entry.journal;
+		let entryMoods = entry.moods;
+		
+		let newEntryBtn =
+			'<div class="entryBtn panel-block" style=" id="' +
+			entryId +
+			'"><p id="entryDate">Date: ' +
+			entryDate +
+			'</p><p id="entryJournal">Journal: ' +
+			entryJournal +
+			'</p><p id="entryMoods">Moods: ' +
+			entryMoods +
+			"</p><br></div>";
+		$("#entryList").append(newEntryBtn);
+		$("#entryList")
+			.parent()
+			.show();	
 		});
 	}
 
@@ -50,37 +72,37 @@ $(document).ready(function() {
 		});
 		// send moods to WordCloud API and get back mood cloud
 		console.log("API string: " + moodString);
-		// 	fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
-		// 		method: "POST",
-		// 		headers: {
-		// 			"x-rapidapi-host": "textvis-word-cloud-v1.p.rapidapi.com",
-		// 			"x-rapidapi-key": "442fbf0644mshed26ef444ee0de1p1dbed6jsn2dec5654b644",
-		// 			"content-type": "application/json",
-		// 			accept: "application/json",
-		// 		},
-		// 		body: JSON.stringify({
-		// 			text: moodString,
-		// 			scale: 1,
-		// 			width: 800,
-		// 			height: 800,
-		// 			colors: ["#375E97", "#FB6542", "#FFBB00", "#3F681C"],
-		// 			font: "Tahoma",
-		// 			use_stopwords: true,
-		// 			language: "en",
-		// 			uppercase: false,
-		// 		}),
-		// 	})
-		// 		.then((response) => {
-		// 			return response.text();
-		// 		})
-		// 		.then((wordCloud) => {
-		// 			var img = document.getElementById("wordCloud");
-		// 			img.src = wordCloud;
-		// 			img.height = 800;
-		// 			img.width = 800;
-		// 		})
-		// 		.catch((err) => {
-		// 			throw err;
-		// 		});
+			fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
+				method: "POST",
+				headers: {
+					"x-rapidapi-host": "textvis-word-cloud-v1.p.rapidapi.com",
+					"x-rapidapi-key": "442fbf0644mshed26ef444ee0de1p1dbed6jsn2dec5654b644",
+					"content-type": "application/json",
+					accept: "application/json",
+				},
+				body: JSON.stringify({
+					text: moodString,
+					scale: 1,
+					width: 800,
+					height: 800,
+					colors: ["#375E97", "#FB6542", "#FFBB00", "#3F681C"],
+					font: "Tahoma",
+					use_stopwords: true,
+					language: "en",
+					uppercase: false,
+				}),
+			})
+				.then((response) => {
+					return response.text();
+				})
+				.then((wordCloud) => {
+					var img = document.getElementById("wordCloud");
+					img.src = wordCloud;
+					img.height = 800;
+					img.width = 800;
+				})
+				.catch((err) => {
+					throw err;
+				});
 	}
 });
