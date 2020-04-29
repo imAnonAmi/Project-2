@@ -1,6 +1,11 @@
 $(document).ready(function() {
 	// When page opens
-	$("#example1").calendar();
+	// get info on user that is logged in and add to page
+
+	//calender js
+	$("#example2").calendar({
+		type: "date",
+	});
 
 	// get info on user that is logged in and add to page
 	$.get("/api/user_data").then(function(data) {
@@ -67,12 +72,12 @@ $(document).ready(function() {
 
 	//slider nightmare
 	$(".ui.modal").modal("show");
-	// Semantic UI Range
-	$(".ui.range").range({
+
+	$(".range").range({
 		min: 0,
-		max: 10,
-		start: 10,
-		step: 1,
+		max: 9,
+		start: 0,
+		labelType: "letter",
 	});
 
 	$("#smooth").range({

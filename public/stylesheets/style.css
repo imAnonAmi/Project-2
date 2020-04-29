@@ -2,3 +2,9 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+body{
+  margin: 20px;
+}
+.row{
+  margin: 5px;
+}
