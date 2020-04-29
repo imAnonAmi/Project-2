@@ -10,11 +10,12 @@ module.exports = function(app) {
 	});
 
 	// GET route for getting all entries
-	app.get("/api/moods", function(req, res) {
+	app.get("/api/moods-view", function(req, res) {
 		let query = {};
 		// set user ID (if any)
 		if (req.query.user_id) {
 			query.UserId = req.query.user_id;
+			console.log("query user: " + query.UserId);
 		}
 		// find all mood entries associated with user
 		db.MoodEntry.findAll({

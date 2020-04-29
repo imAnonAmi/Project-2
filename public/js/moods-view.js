@@ -4,60 +4,82 @@ $(document).ready(function() {
 	let url = window.location.search;
 	let userId;
 
-	userId = url.split("=")[1];
+	// get info on user that is logged in and set as userId
+	$.get("/api/user_data").then(function(data) {
+		userId = data.id;
+	});
+
+	// Inital view of page shows all entries from logged in user
 	getEntries(userId);
+
+	// Event listener to show all entries from all users
+	$("#all-users").on("click", getEntries);
 
 	// Function to get entries from database and display on page
 	function getEntries(user) {
 		userId = user || "";
+		// if a user is specified only get entries from that user
 		if (userId) {
 			userId = "/?user_id=" + userId;
 		}
-		$.get("/api/moods" + userId, (data) => {
-			if (!data || !data.length) {
-				alert("No entries!");
+		$.get("/api/moods-view" + userId, (entries) => {
+			if (!entries || !entries.length) {
+				// displayEmpty();
 			} else {
-				// create string from all data.moods entries
-				let moodString = "";
-				// send to moodCloud function
-				moodCloud(moodString);
+				moodJournal(entries);
+				moodCloud(entries);
 			}
 		});
 	}
 
+	// Function to display user journal
+	function moodJournal(entries) {
+		entries.forEach((entry) => {
+			// Create row or card for each entry
+		});
+	}
 	// Function to display moods as word cloud
-	function moodCloud(moodString) {
-		fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
-			method: "POST",
-			headers: {
-				"x-rapidapi-host": "textvis-word-cloud-v1.p.rapidapi.com",
-				"x-rapidapi-key": "442fbf0644mshed26ef444ee0de1p1dbed6jsn2dec5654b644",
-				"content-type": "application/json",
-				accept: "application/json",
-			},
-			body: JSON.stringify({
-				text: moodString,
-				scale: 1,
-				width: 800,
-				height: 800,
-				colors: ["#375E97", "#FB6542", "#FFBB00", "#3F681C"],
-				font: "Tahoma",
-				use_stopwords: true,
-				language: "en",
-				uppercase: false,
-			}),
-		})
-			.then((response) => {
-				return response.text();
-			})
-			.then((wordCloud) => {
-				var img = document.getElementById("wordCloud");
-				img.src = wordCloud;
-				img.height = 800;
-				img.width = 800;
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+	function moodCloud(entries) {
+		// create string from all moods in entries
+		let moodString = "";
+		entries.forEach((entry) => {
+			moodString += entry.moods;
+			moodString += " ";
+		});
+		// send moods to WordCloud API and get back mood cloud
+		console.log("moodstring: " + moodString);
+		// disable call to API for testing of other functionality
+		// fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"x-rapidapi-host": "textvis-word-cloud-v1.p.rapidapi.com",
+		// 		"x-rapidapi-key": "442fbf0644mshed26ef444ee0de1p1dbed6jsn2dec5654b644",
+		// 		"content-type": "application/json",
+		// 		accept: "application/json",
+		// 	},
+		// 	body: JSON.stringify({
+		// 		text: moodString,
+		// 		scale: 1,
+		// 		width: 800,
+		// 		height: 800,
+		// 		colors: ["#375E97", "#FB6542", "#FFBB00", "#3F681C"],
+		// 		font: "Tahoma",
+		// 		use_stopwords: true,
+		// 		language: "en",
+		// 		uppercase: false,
+		// 	}),
+		// })
+		// 	.then((response) => {
+		// 		return response.text();
+		// 	})
+		// 	.then((wordCloud) => {
+		// 		var img = document.getElementById("wordCloud");
+		// 		img.src = wordCloud;
+		// 		img.height = 800;
+		// 		img.width = 800;
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 	}
 });
