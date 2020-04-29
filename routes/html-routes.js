@@ -26,11 +26,7 @@ module.exports = function(app) {
 	app.get("/moods-entry", isAuthenticated, function(req, res) {
 		res.sendFile(path.join(__dirname, "../public/moods-entry.html"));
 	});
-	// disable requirement to be logged in for testing
-	app.get("/moods-view", function(req, res) {
+	app.get("/moods-view", isAuthenticated, function(req, res) {
 		res.sendFile(path.join(__dirname, "../public/moods-view.html"));
 	});
-	// app.get("/moods-view", isAuthenticated, function(req, res) {
-	// 	res.sendFile(path.join(__dirname, "../public/moods-view.html"));
-	// });
 };
