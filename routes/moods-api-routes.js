@@ -10,7 +10,7 @@ module.exports = function(app) {
 	});
 
 	// GET route for getting all entries
-	app.get("/api/posts", function(req, res) {
+	app.get("/api/moods-view", function(req, res) {
 		let query = {};
 		// set user ID (if any)
 		if (req.query.user_id) {

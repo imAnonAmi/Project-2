@@ -1,14 +1,13 @@
-$(document).ready(function () {
+$(document).ready(function() {
 	// When page opens
 	// get info on user that is logged in and add to page
 
 	//calender js
-	$('#example2').calendar({
-		type: 'date'
+	$("#example2").calendar({
+		type: "date",
 	});
 
-
-	$.get("/api/user_data").then(function (data) {
+	$.get("/api/user_data").then(function(data) {
 		$(".member-name").text(data.email);
 		$("#author").val(data.id);
 	});
@@ -39,11 +38,20 @@ $(document).ready(function () {
 				moodString += " ";
 			}
 		});
+		console.log("author: " + $("#author").val());
+		console.log("date: " + $("#entry-date").val());
+		console.log(
+			"journal: " +
+				$("#journal")
+					.val()
+					.trim()
+		);
+		console.log("moods: " + moodString);
 
 		// create new moodEntry object
 		const newMoodEntry = {
 			// this is logged in user
-			authorID: $("#author").val(),
+			UserId: $("#author").val(),
 			// date might not be a value ???
 			date: $("#entry-date").val(),
 			moods: moodString,
@@ -62,7 +70,7 @@ $(document).ready(function () {
 
 	// Submit new moods-entry and redirect to moods-view page
 	function submitEntry(moodEntry) {
-		$.post("/api/moods-entry", moodEntry, function () {
+		$.post("/api/moods-entry", moodEntry, function() {
 			window.location.href = "/moods-view";
 		});
 	}
@@ -73,13 +81,10 @@ $(document).ready(function () {
 	//slider nightmare
 	$(".ui.modal").modal("show");
 
-	$('.range').range({
+	$(".range").range({
 		min: 0,
 		max: 9,
 		start: 0,
-		labelType: 'letter'
+		labelType: "letter",
 	});
-
-
-
 });
