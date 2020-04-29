@@ -15,7 +15,6 @@ module.exports = function(app) {
 		// set user ID (if any)
 		if (req.query.user_id) {
 			query.UserId = req.query.user_id;
-			console.log("query user: " + query.UserId);
 		}
 		// find all mood entries associated with user
 		db.MoodEntry.findAll({
