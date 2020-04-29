@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Passport Authentication</title>
+	<title>Mood Entry</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -22,17 +22,23 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/logout">
+		<!--Navbar-->
+		<div class="ui secondary pointing menu">
+			<a class="active item" href="/moods-entry">
+				Home
+			</a>
+			<a class="item" href="/moods-view">
+				View Entries
+			</a>
+			<div class="right menu">
+				<a class="ui item" href="/logout">
 					Logout
 				</a>
 			</div>
 		</div>
-	</nav>
-	<div class="ui equal width vertically divided grid">
-		<div class="ten wide column">
+
+	<div class="ui two column centered grid">
+		<div class="twelve wide column">
 			<div class="row">
 				<!-- User email is added here by moods-entry.js -->
 				<h2>Welcome <span class="member-name"></span></h2>
@@ -118,7 +124,6 @@
 								src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-crying-expression-clipart.jpg"></label>
 					</div>
 				</div>
-
 			</div>
 			<div class="row">
 				<div class="ui segment">
