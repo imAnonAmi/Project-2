@@ -7,7 +7,6 @@ $(document).ready(function() {
 		type: "date",
 	});
 
-	// get info on user that is logged in and add to page
 	$.get("/api/user_data").then(function(data) {
 		$(".member-name").text(data.email);
 		$("#author").val(data.id);
@@ -39,11 +38,20 @@ $(document).ready(function() {
 				moodString += " ";
 			}
 		});
+		console.log("author: " + $("#author").val());
+		console.log("date: " + $("#entry-date").val());
+		console.log(
+			"journal: " +
+				$("#journal")
+					.val()
+					.trim()
+		);
+		console.log("moods: " + moodString);
 
 		// create new moodEntry object
 		const newMoodEntry = {
 			// this is logged in user
-			authorID: $("#author").val(),
+			UserId: $("#author").val(),
 			// date might not be a value ???
 			date: $("#entry-date").val(),
 			moods: moodString,
@@ -77,20 +85,6 @@ $(document).ready(function() {
 		min: 0,
 		max: 9,
 		start: 0,
-		labelType: "letter",
-	});
-
-	$("#smooth").range({
-		min: 0,
-		max: 10,
-		start: 5,
-		smooth: true,
-	});
-
-	$("#range-0").range({
-		min: 0,
-		max: 10,
-		start: 5,
 		labelType: "letter",
 	});
 });
