@@ -26,7 +26,7 @@ $(document).ready(function() {
 			if (!entries || !entries.length) {
 				// displayEmpty();
 			} else {
-				moodJournal(entries);
+        moodJournal(entries);
 				moodCloud(entries);
 			}
 		});
