@@ -22,198 +22,140 @@
 </head>
 
 <body>
-		<!--Navbar-->
-		<div class="ui secondary pointing menu">
-			<a class="active item" href="/moods-entry">
-				Home
+	<!--Navbar-->
+	<div class="ui secondary pointing menu">
+		<a class="active item" href="/moods-entry">
+			Home
+		</a>
+		<a class="item" href="/moods-view">
+			View Entries
+		</a>
+		<div class="right menu">
+			<a class="ui item" href="/logout">
+				Logout
 			</a>
-			<a class="item" href="/moods-view">
-				View Entries
-			</a>
-			<div class="right menu">
-				<a class="ui item" href="/logout">
-					Logout
-				</a>
-			</div>
 		</div>
+	</div>
 
 	<div class="ui two column centered grid">
 		<div class="twelve wide column">
 			<div class="row">
 				<!-- User email is added here by moods-entry.js -->
-				<h2>Welcome <span class="member-name"></span></h2>
+				<h1>Welcome <span class="member-name"></span></h1>
 			</div>
-			<div class="row">
-				<div class="ui form" id="mood-form">
-					<input type="hidden" id="author">
-
-					<div class="ui calendar" id="example2">
-						<div class="ui input left icon">
-							<i class="calendar icon"></i>
-							<input type="text" id="entry-date" placeholder="Date">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="ui hidden divider"></div>
-			<h1>What are you feeling?</h1>
-			<!--excited row-->
-			<div class="row">
-				<div class="column">
-					<div class="ui checkbox">
-						<input type="checkbox" name="example">
-						<label><img class="ui tiny image"
-								src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-surprise-expression-clipart.jpg"></label>
-					</div>
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="ui segment">
-					<div class="ui labeled range" id="excitedRange">
-						<ul class="labels">
-							<li class="active label">Excited</li>
-							<li class="label">Energetic</li>
-							<li class="label">Bouncy</li>
-							<li class="label">Nervous</li>
-							<li class="label">Perky</li>
-							<li class="label">Motivated</li>
-							<li class="label">Focused</li>
-							<li class="label">Centered</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
-		<div class="ui equal width vertically divided grid">
-			<div class="ten wide column">
+			<br>
+			<form id="mood-form">
 				<div class="row">
-					<!-- User email is added here by moods-entry.js -->
-					<h2>Welcome <span class="member-name"></span></h2>
-				</div>
-				<form id="mood-form">
-					<div class="row">
-						<div class="ui form" id="mood-form">
-							<input type="hidden" id="author" />
+					<div class="ui form" id="mood-form">
+						<input type="hidden" id="author" />
 
-							<div class="ui calendar" id="example2">
-								<div class="ui input left icon">
-									<i class="calendar icon"></i>
-									<input type="text" id="entry-date" placeholder="Date" />
-								</div>
+						<div class="ui calendar" id="example2">
+							<div class="ui input left icon">
+								<i class="calendar icon"></i>
+								<input type="text" id="entry-date" placeholder="Date" />
 							</div>
 						</div>
 					</div>
-					<div class="ui hidden divider"></div>
-					<h1>What are you feeling?</h1>
-					<!--excited row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-surprise-expression-clipart.jpg"
-									/></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="ui segment">
-								<div class="ui labeled range" id="excitedRange">
-									<ul class="labels">
-										<li class="active label">Excited</li>
-										<li class="label">Energetic</li>
-										<li class="label">Bouncy</li>
-										<li class="label">Nervous</li>
-										<li class="label">Perky</li>
-										<li class="label">Motivated</li>
-										<li class="label">Focused</li>
-										<li class="label">Centered</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-					<!--happy row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-happy-expression-clipart-2.jpg"
-									/></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="ui segment">
-								<div class="ui labeled range" id="happyRange">
-									<ul class="labels">
-										<li class="label">Contented</li>
-										<li class="label">Glad</li>
-										<li class="active label">Satisfied</li>
-										<li class="label">Optimistic</li>
-										<li class="label">Pleased</li>
-										<li class="label">Joyful</li>
-										<li class="label">Delighted</li>
-										<li class="label">Mirthful</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-
-					<!--sad row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-crying-expression-clipart.jpg"
-									/></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="ui segment">
-								<div class="ui labeled range" id="sadRange">
-									<ul class="labels">
-										<li class="label">Down</li>
-										<li class="label">Dejected</li>
-										<li class="label">Depressed</li>
-										<li class="label">Heartbroken</li>
-										<li class="label">Blue</li>
-										<li class="active label">Unhappy</li>
-										<li class="label">Downhearted</li>
-										<li class="label">Demoralized</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-
-					<!--Angry-->
+				</div>
+				<div class="ui hidden divider"></div>
+				<h1>What are you feeling?</h1>
+				<!--excited row-->
+				<fieldset class="emotion">
 					<div class="row">
 						<div class="column">
 							<div class="ui checkbox">
 								<input type="checkbox" name="example" />
-								<label
-									><img
-										class="ui tiny image"
-										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-furious-expression-clipart.jpg"
-								/></label>
+								<label><img class="ui tiny image"
+										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-surprise-expression-clipart.jpg" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="ui segment">
+							<div class="ui labeled range" id="excitedRange">
+								<ul class="labels">
+									<li class="active label">Excited</li>
+									<li class="label">Energetic</li>
+									<li class="label">Bouncy</li>
+									<li class="label">Nervous</li>
+									<li class="label">Perky</li>
+									<li class="label">Motivated</li>
+									<li class="label">Focused</li>
+									<li class="label">Centered</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="ui hidden divider"></div>
+				</fieldset>
+				<!--happy row-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-happy-expression-clipart-2.jpg" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="ui segment">
+							<div class="ui labeled range" id="happyRange">
+								<ul class="labels">
+									<li class="label">Contented</li>
+									<li class="label">Glad</li>
+									<li class="active label">Satisfied</li>
+									<li class="label">Optimistic</li>
+									<li class="label">Pleased</li>
+									<li class="label">Joyful</li>
+									<li class="label">Delighted</li>
+									<li class="label">Mirthful</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="ui hidden divider"></div>
+				</fieldset>
+
+				<!--sad row-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-crying-expression-clipart.jpg" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="ui segment">
+							<div class="ui labeled range" id="sadRange">
+								<ul class="labels">
+									<li class="label">Down</li>
+									<li class="label">Dejected</li>
+									<li class="label">Depressed</li>
+									<li class="label">Heartbroken</li>
+									<li class="label">Blue</li>
+									<li class="active label">Unhappy</li>
+									<li class="label">Downhearted</li>
+									<li class="label">Demoralized</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="ui hidden divider"></div>
+				</fieldset>
+
+				<!--Angry-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-furious-expression-clipart.jpg" /></label>
 							</div>
 						</div>
 					</div>
@@ -234,17 +176,15 @@
 						</div>
 					</div>
 					<div class="ui hidden divider"></div>
-
-					<!--Scared row-->
+				</fieldset>
+				<!--Scared row-->
+				<fieldset class="emotion">
 					<div class="row">
 						<div class="column">
 							<div class="ui checkbox">
 								<input type="checkbox" name="example" />
-								<label
-									><img
-										class="ui tiny image"
-										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-frightened-expression-clipart-2.jpg"
-								/></label>
+								<label><img class="ui tiny image"
+										src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-frightened-expression-clipart-2.jpg" /></label>
 							</div>
 						</div>
 					</div>
@@ -265,20 +205,22 @@
 						</div>
 					</div>
 					<div class="ui hidden divider"></div>
-					<!--text feild-->
-					<div class="ui form">
-						<div class="field">
-							<h1>How was your day?</h1>
-							<textarea id="journal"></textarea>
-						</div>
+				</fieldset>
+				<!--text feild-->
+				<div class="ui form">
+					<div class="field">
+						<h1>How was your day?</h1>
+						<textarea id="journal"></textarea>
 					</div>
+				</div>
 
-					<div class="ui hidden divider"></div>
-					<button class="ui primary button">
-						Save
-					</button>
-				</form>
-			</div>
+				<div class="ui hidden divider"></div>
+				<button class="ui primary button">
+					Save
+				</button>
+			</form>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>

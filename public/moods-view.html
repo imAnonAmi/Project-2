@@ -2,25 +2,26 @@
 <html lang="en">
 
 
-	<head>
-		<title>View Entries</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
-		<script src="js/semantic.min.js"></script>
-		<link rel='stylesheet prefetch'
-			href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
-		<script src="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.js"></script>
-		<link href="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.css" rel="stylesheet" />
-		<link
-			href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
-			rel="stylesheet" type="text/css" />
-		<script
-			src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
-		<link href="stylesheets/style.css" rel="stylesheet" />
-		<script type="text/javascript" src="js/moods-entry.js"></script>
-	</head>
+<head>
+	<title>View Entries</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+	<script src="js/semantic.min.js"></script>
+	<link rel='stylesheet prefetch'
+		href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+	<script src="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.js"></script>
+	<link href="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.css" rel="stylesheet" />
+	<link
+		href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+		rel="stylesheet" type="text/css" />
+	<script
+		src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+	<link href="stylesheets/style.css" rel="stylesheet" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/moods-view.js"></script>
+</head>
 
 <body>
 	<!--Navbar-->
@@ -38,37 +39,20 @@
 		</div>
 	</div>
 
+	<div class="ui hidden divider"></div>
+
 	<div class="ui two column grid">
 		<div class="six wide column">
-			<table class="ui selectable celled table">
-				<thead>
-					<tr>
-						<th>Entry</th>
-						<th>Date</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Entry #1</td>
-						<td>3/28/2020</td>
-					</tr>
-					<tr>
-						<td>Entry #2</td>
-						<td>4/5/2020</td>
-					</tr>
-					<tr>
-						<td>Entry #3</td>
-						<td>4/15/2020</td>
-					</tr>
-				</tbody>
-			</table>
+			<h1>Mood Entries</h1>
+			<!--list test-->
+			<div id="entryList" class="ui relaxed divided list">
+
+				<!--Entries will populate here-->
+			</div>
+			<div class="column">
+				<img id="wordCloud" />
+			</div>
 		</div>
-		<div class="column">
-			<img id="wordCloud" />
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-			<script type="text/javascript" src="js/moods-view.js"></script>
-		</div>
-	</div>
 </body>
 
 </html>
