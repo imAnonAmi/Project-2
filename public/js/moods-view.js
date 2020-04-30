@@ -71,7 +71,6 @@ $(document).ready(function() {
 			moodString += " ";
 		});
 		// send moods to WordCloud API and get back mood cloud
-		console.log("API string: " + moodString);
 			fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
 				method: "POST",
 				headers: {
