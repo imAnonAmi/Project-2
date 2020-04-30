@@ -8,3 +8,6 @@ body{
 .row{
   margin: 5px;
 }
+fieldset {
+ border: 0;
+}
