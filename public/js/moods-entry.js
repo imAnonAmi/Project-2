@@ -1,15 +1,32 @@
 $(document).ready(function() {
 	// When page opens
 	// get info on user that is logged in and add to page
+	$.get("/api/user_data").then(function(data) {
+		$(".member-name").text(data.email);
+		$("#author").val(data.id);
+	});
 
-	//calender js
+	//calender
 	$("#example2").calendar({
 		type: "date",
 	});
 
-	$.get("/api/user_data").then(function(data) {
-		$(".member-name").text(data.email);
-		$("#author").val(data.id);
+	//slider nightmare
+	$(".ui.modal").modal("show");
+
+	$(".range").range({
+		min: 0,
+		max: 9,
+		start: 0,
+		labelType: "letter",
+		onChange: function(value) {
+			let labelArray = $(this).find(".label");
+			if (value > 0 && value < 9) {
+				let activeLabel = labelArray[value - 1].innerText;
+				let thisRange = $(this)[0].id;
+				$("#" + thisRange).attr("title", activeLabel);
+			}
+		},
 	});
 
 	// Event listener for submitting moods entry
@@ -23,30 +40,22 @@ $(document).ready(function() {
 		// create mood string
 		let moodString = "";
 		// for each emotion
-		$("fieldset.emotion").each(() => {
-			// if box is checked
+		$(".emotion").each(function() {
+			// if checkbox is checked
 			if (
 				$(this)
-					.children('input[type="checkbox"]')
+					.find('input[type="checkbox"]')
 					.is(":checked")
 			) {
 				// set describer word based on position of slider
-				const describer = $(this).find("li.active").innerText;
+				const thisRange = $(this).find(".range")[0].id;
+				const describer = $("#" + thisRange).attr("title");
 				// add describer value to mood string
 				moodString += describer;
-				// add space between describer words
-				moodString += " ";
+				// add comma and space between describer words
+				moodString += ", ";
 			}
 		});
-		console.log("author: " + $("#author").val());
-		console.log("date: " + $("#entry-date").val());
-		console.log(
-			"journal: " +
-				$("#journal")
-					.val()
-					.trim()
-		);
-		console.log("moods: " + moodString);
 
 		// create new moodEntry object
 		const newMoodEntry = {
@@ -77,14 +86,4 @@ $(document).ready(function() {
 
 	// Update previous moods-entry and redirect??
 	// function updateEntry(moodEntry) {}
-
-	//slider nightmare
-	$(".ui.modal").modal("show");
-
-	$(".range").range({
-		min: 0,
-		max: 9,
-		start: 0,
-		labelType: "letter",
-	});
 });

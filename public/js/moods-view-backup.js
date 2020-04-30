@@ -46,15 +46,15 @@ $(document).ready(function() {
 		let entryMoods = entry.moods;
 		
 		let newEntryBtn =
-			'<div class="item" id="' +
+			'<div class="entryBtn panel-block" style=" id="' +
 			entryId +
-			'"><div class="content"><div class="header" id="entryDate"><b>Date: </b>' +
+			'"><p id="entryDate">Date: ' +
 			entryDate +
-			'</div><div class="item" id="entryMoods"><b>Moods: </b>' +
-			entryMoods +
-			'</div><div class="item" id="entryJournal"><b>Journal: </b>' +
+			'</p><p id="entryJournal">Journal: ' +
 			entryJournal +
-			"</div></div></div><br>";
+			'</p><p id="entryMoods">Moods: ' +
+			entryMoods +
+			"</p><br></div>";
 		$("#entryList").append(newEntryBtn);
 		$("#entryList")
 			.parent()
@@ -71,6 +71,7 @@ $(document).ready(function() {
 			moodString += " ";
 		});
 		// send moods to WordCloud API and get back mood cloud
+		console.log("API string: " + moodString);
 			fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
 				method: "POST",
 				headers: {
