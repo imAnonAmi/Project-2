@@ -42,7 +42,7 @@ None
 
 ## License
 
-N/A
+Files for signup and login functions of the application were provided by:© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
 
 ## Contributors
 
