@@ -6,7 +6,7 @@ $(document).ready(function() {
 		$("#user").val(data.id);
 	});
 
-	// Calender
+	// Calendar
 	$("#calendar").calendar({
 		type: "date",
 	});
