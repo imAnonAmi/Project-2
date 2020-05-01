@@ -1,43 +1,46 @@
 $(document).ready(function() {
-  // Getting references to our form and input
-  var signUpForm = $("form.signup");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
+	// Variables for HTML locations
+	const signUpForm = $("form.signup");
+	const emailInput = $("input#email-input");
+	const passwordInput = $("input#password-input");
 
-  // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on("submit", function(event) {
-    event.preventDefault();
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
-    };
+	// Listener for submit
+	signUpForm.on("submit", function(event) {
+		event.preventDefault();
+		const userData = {
+			email: emailInput.val().trim(),
+			password: passwordInput.val().trim(),
+		};
+		// Verify that email and password have been entered
+		if (!userData.email || !userData.password) {
+			return;
+		}
+		// Call to signup function
+		signUpUser(userData.email, userData.password);
+		// Clear form
+		emailInput.val("");
+		passwordInput.val("");
+	});
 
-    if (!userData.email || !userData.password) {
-      return;
-    }
-    // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
-  });
+	// Function to signup user
+	function signUpUser(email, password) {
+		// POST call to signup route
+		$.post("/api/signup", {
+			email: email,
+			password: password,
+		})
+			// Redirect to entry page
+			.then(() => {
+				window.location.replace("/moods-entry");
+			})
+			// Handle errors
+			.catch(handleLoginErr);
+	}
 
-  // Does a post to the signup route. If successful, we are redirected to the members page
-  // Otherwise we log any errors
-  function signUpUser(email, password) {
-    $.post("/api/signup", {
-      email: email,
-      password: password
-    })
-      .then(function() {
-        window.location.replace("/moods-entry");
-        //error not working currently cause bootstrap
-        // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .catch(handleLoginErr);
-  }
-
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
+	// Function to display error message
+	function handleLoginErr(err) {
+		let error = JSON.parse(err.responseText);
+		$("#alert").text(error.errors[0].message);
+		$("#alert").fadeIn(500);
+	}
 });
