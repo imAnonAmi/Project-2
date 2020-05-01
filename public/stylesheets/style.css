@@ -4,7 +4,7 @@ form.login {
 }
 .home {
   margin: 20px;
-  background-image: url(https://i.pinimg.com/564x/39/71/f0/3971f0682c7cdc2eb7fd6e35273227c2.jpg);
+  background-image: url(img/clouds.jpg);
   background-color: #b6a19e;
   background-repeat: no-repeat;
   background-position: center;
@@ -61,5 +61,11 @@ body{
   }
   .welcome {
     font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .hide {
+    display: none !important;
   }
 }
