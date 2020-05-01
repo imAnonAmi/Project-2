@@ -8,6 +8,7 @@ module.exports = (app) => {
 			res.json(dbEntry);
 		});
 	});
+
 	// GET route for getting entries
 	app.get("/api/moods-view", (req, res) => {
 		let query = {};

@@ -1,44 +1,46 @@
 $(document).ready(function() {
-	// Show mood cloud background
+	// Variables for HTML locations
+	const signUpForm = $("form.signup");
+	const emailInput = $("input#email-input");
+	const passwordInput = $("input#password-input");
 
-	// Getting references to our form and input
-	var signUpForm = $("form.signup");
-	var emailInput = $("input#email-input");
-	var passwordInput = $("input#password-input");
-
-	// When the signup button is clicked, we validate the email and password are not blank
+	// Listener for submit
 	signUpForm.on("submit", function(event) {
 		event.preventDefault();
-		var userData = {
+		const userData = {
 			email: emailInput.val().trim(),
 			password: passwordInput.val().trim(),
 		};
-
+		// Verify that email and password have been entered
 		if (!userData.email || !userData.password) {
 			return;
 		}
-		// If we have an email and password, run the signUpUser function
+		// Call to signup function
 		signUpUser(userData.email, userData.password);
+		// Clear form
 		emailInput.val("");
 		passwordInput.val("");
 	});
 
-	// Does a post to the signup route. If successful, we are redirected to the members page
-	// Otherwise we log any errors
+	// Function to signup user
 	function signUpUser(email, password) {
+		// POST call to signup route
 		$.post("/api/signup", {
 			email: email,
 			password: password,
 		})
-			.then(function() {
+			// Redirect to entry page
+			.then(() => {
 				window.location.replace("/moods-entry");
 			})
+			// Handle errors
 			.catch(handleLoginErr);
 	}
 
+	// Function to display error message
 	function handleLoginErr(err) {
 		let error = JSON.parse(err.responseText);
-		$("#alert .msg").text(error.errors[0].message);
+		$("#alert").text(error.errors[0].message);
 		$("#alert").fadeIn(500);
 	}
 });

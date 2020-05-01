@@ -1,16 +1,15 @@
 $(document).ready(function() {
 	// When page opens
-	// get info on user that is logged in and set as userId
+	// Get user ID from previous page
 	let userId;
-	$.get("/api/user_data").then(function(data) {
-		userId = data.id;
-	});
-
-	// Inital view of page shows all entries from logged in user
-	getEntries(userId);
-
-	// Event listener to show all entries from all users
-	$("#all-users").on("click", getEntries);
+	$.get("/api/user_data")
+		.then(function(data) {
+			userId = data.id;
+		})
+		// Get all user entries
+		.then(() => {
+			getEntries(userId);
+		});
 
 	// Function to get entries from database and display on page
 	function getEntries(user) {
@@ -19,51 +18,56 @@ $(document).ready(function() {
 		if (userId) {
 			userId = "/?user_id=" + userId;
 		}
+		// GET call to view route
 		$.get("/api/moods-view" + userId, (entries) => {
-			if (!entries || !entries.length) {
-				// displayEmpty();
-			} else {
-				moodJournal(entries);
-				moodCloud(entries);
-			}
+			moodJournal(entries);
+			moodCloud(entries);
 		});
 	}
 
 	// Function to display user journal
 	function moodJournal(entries) {
-		entries.forEach((entry) => {
-			// let entryUserId = entry.UserId;
-			let entryDate = entry.date;
-			let entryId = entry.id;
-			let entryJournal = entry.journal;
-			let entryMoods = entry.moods;
+		// Display message if there are no entries
+		if (!entries || !entries.length) {
+			let noEntries = '<div class="item">No entries!</div>';
+			$("#entryList").append(noEntries);
+		}
+		// Create a card for each entry
+		else {
+			entries.forEach((entry) => {
+				// let entryUserId = entry.UserId;
+				let entryDate = entry.date;
+				let entryId = entry.id;
+				let entryJournal = entry.journal;
+				let entryMoods = entry.moods;
 
-			let newEntryBtn =
-				'<div class="item" id="' +
-				entryId +
-				'"><div class="content"><div class="header" id="entryDate"><b>Date: </b>' +
-				entryDate +
-				'</div><div class="item" id="entryMoods"><b>Moods: </b>' +
-				entryMoods +
-				'</div><div class="item" id="entryJournal"><b>Journal: </b>' +
-				entryJournal +
-				"</div></div></div><br>";
-			$("#entryList").append(newEntryBtn);
-			$("#entryList")
-				.parent()
-				.show();
-		});
+				let newEntryCard =
+					'<div class="item" id="' +
+					entryId +
+					'"><div class="content"><div class="header" id="entryDate"><b>Date: </b>' +
+					entryDate +
+					'</div><div class="item" id="entryMoods"><b>Moods: </b>' +
+					entryMoods +
+					'</div><div class="item" id="entryJournal"><b>Journal: </b>' +
+					entryJournal +
+					"</div></div></div><br>";
+				$("#entryList").append(newEntryCard);
+				$("#entryList")
+					.parent()
+					.show();
+			});
+		}
 	}
 
 	// Function to display moods as word cloud
 	function moodCloud(entries) {
-		// create string from all moods in entries
+		// Create string from all moods in entries
 		let moodString = "";
 		entries.forEach((entry) => {
 			moodString += entry.moods;
 			moodString += " ";
 		});
-		// send moods to WordCloud API and get back mood cloud
+		// Send moods to WordCloud API and get back mood cloud
 		fetch("https://textvis-word-cloud-v1.p.rapidapi.com/v1/textToCloud", {
 			method: "POST",
 			headers: {

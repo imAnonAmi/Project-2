@@ -15,6 +15,7 @@ module.exports = (app) => {
 		// If the user is not signed in, direct to signup page
 		res.sendFile(path.join(__dirname, "../public/signup.html"));
 	});
+
 	// Login
 	app.get("/login", (req, res) => {
 		// If the user is signed in, direct to entry page
@@ -24,11 +25,13 @@ module.exports = (app) => {
 		// If the user is not signed in, direct to login page
 		res.sendFile(path.join(__dirname, "../public/login.html"));
 	});
+
 	// Entry page
 	// If user is not logged in, isAuthenticated middleware redirects to signup page
 	app.get("/moods-entry", isAuthenticated, (req, res) => {
 		res.sendFile(path.join(__dirname, "../public/moods-entry.html"));
 	});
+
 	// View page
 	// If user is not logged in, isAuthenticated middleware redirects to signup page
 	app.get("/moods-view", isAuthenticated, (req, res) => {
