@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 		// Create new moodEntry object
 		const newMoodEntry = {
-			UserId: $("#author").val(),
+			UserId: $("#user").val(),
 			date: $("#entry-date").val(),
 			moods: moodString,
 			journal: $("#journal")
@@ -74,7 +74,8 @@ $(document).ready(function() {
 		};
 
 		// Validate for mandatory entries
-		if (!newMoodEntry.UserId || !newMoodEntry.date || newMoodEntry.moods) {
+		console.log(newMoodEntry);
+		if (!newMoodEntry.UserId || !newMoodEntry.date || !newMoodEntry.moods) {
 			$("#alert").text("You must choose a mood. And don't forget the date!");
 			$("#alert").fadeIn(500);
 			return;
