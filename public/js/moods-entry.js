@@ -74,7 +74,6 @@ $(document).ready(function() {
 		};
 
 		// Validate for mandatory entries
-		console.log(newMoodEntry);
 		if (!newMoodEntry.UserId || !newMoodEntry.date || !newMoodEntry.moods) {
 			$("#alert").text("You must choose a mood. And don't forget the date!");
 			$("#alert").fadeIn(500);
