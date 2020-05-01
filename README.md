@@ -52,7 +52,17 @@ Andrew McIntire - https://github.com/imAnonAmi
 
 ## Tests
 
-N/A
+Travis CI
 
 ## Questions and Further Areas for Development
+
+- Filter Moodle results to a user defined timeline
+- Add interactivity to journal entries to enable editing
+- Greater causality logging
+### Advanced filtering options including the ability to:
+- Add further user details and segmentation options for Moodle
+- Review Moodle results for a group (e.g. friends, teammates)
+- Review user Moodle vs. anonymized results for all users
+
+
 
