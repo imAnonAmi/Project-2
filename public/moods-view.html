@@ -23,9 +23,9 @@
 	<script type="text/javascript" src="js/moods-view.js"></script>
 </head>
 
-<body>
+<body class="moods">
 	<!--Navbar-->
-	<div class="ui secondary pointing menu">
+	<div class="ui secondary pointing inverted menu">
 		<a class="item" href="/moods-entry">
 			Home
 		</a>
@@ -41,9 +41,9 @@
 
 	<div class="ui hidden divider"></div>
 
-	<div class="ui two column grid">
+	<div id="grid" class="ui two column grid stackable">
 		<div class="six wide column">
-			<h1>Mood Entries</h1>
+			<h1 class="welcome">Mood Entries</h1>
 			<!--list test-->
 			<div id="entryList" class="ui relaxed divided list">
 
@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="ten wide column">
-			<img id="wordCloud" />
+			<img class="fluid" id="wordCloud" />
 		</div>
 </body>
 

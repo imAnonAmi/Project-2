@@ -1,17 +1,65 @@
 form.signup,
 form.login {
-	margin-top: 50px;
+  margin-top: 50px;
 }
-body {
-	margin: 20px;
+.home {
+  margin: 20px;
+  background-image: url(https://i.pinimg.com/564x/39/71/f0/3971f0682c7cdc2eb7fd6e35273227c2.jpg);
+  background-color: #b6a19e;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-.row {
-	margin: 5px;
+.moods {
+  background-color: #b6a19e;
+  background-image: linear-gradient(#6c648b,#b6a19e);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.row{
+  margin: 5px;
 }
 fieldset {
-	border: 0;
+ border: 0;
+}
+body{
+  color: white;
+}
+#grid {
+  margin: 20px;
+}
+.title {
+  font-family: 'Courgette', cursive;
+  font-family: 'Merienda', cursive;
+  text-align: center;
+  font-size: 60px;
+  color: #ea847e;
+  -webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
+}
+.welcome {
+  color: #ea847e;
+  font-size: 40px;
+}
+.range {
+  color: #84acce;
+}
+#entryDate {
+  color: white;
+}
+.fluid {
+  width: 100%;
+  height: auto;
 }
 
-.hide {
-	display: none !important;
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 40px;
+    text-align: center;
+  }
+  .welcome {
+    font-size: 25px;
+  }
 }
