@@ -1,242 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Mood Entry</title>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css" />
-		<script src="js/semantic.min.js"></script>
-		<link
-			rel="stylesheet prefetch"
-			href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css"
-		/>
-		<script src="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.js"></script>
-		<link href="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.css" rel="stylesheet" />
-		<link
-			href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
-			rel="stylesheet"
-			type="text/css"
-		/>
-		<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
-		<link href="stylesheets/style.css" rel="stylesheet" />
-		<script type="text/javascript" src="js/moods-entry.js"></script>
-	</head>
 
-	<body>
-		<!--Navbar-->
-		<div class="ui secondary pointing menu">
-			<a class="active item" href="/moods-entry">
-				Home
+<head>
+	<title>Mood Entry</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+	<script src="js/semantic.min.js"></script>
+	<link rel='stylesheet prefetch'
+		href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+	<script src="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.js"></script>
+	<link href="https://rawgit.com/gdaunton/Semantic-UI/range-slider-build/dist/semantic.css" rel="stylesheet" />
+	<link
+		href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
+		rel="stylesheet" type="text/css" />
+	<script
+		src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+	<link href="stylesheets/style.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/moods-entry.js"></script>
+</head>
+
+<body class="moods">
+	<!--Navbar-->
+	<div class="ui secondary pointing inverted menu">
+		<a class="active item" href="/moods-entry">
+			Home
+		</a>
+		<a class="item" href="/moods-view">
+			View Entries
+		</a>
+		<div class="right menu">
+			<a class="ui item" href="/logout">
+				Logout
 			</a>
-			<a class="item" href="/moods-view">
-				View Entries
-			</a>
-			<div class="right menu">
-				<a class="ui item" href="/logout">
-					Logout
-				</a>
-			</div>
 		</div>
+	</div>
 
-		<div class="ui two column centered grid">
-			<div class="twelve wide column">
+	<div class="ui two column centered grid">
+		<div class="doubling twelve wide column">
+			<div class="row">
+				<!-- User email is added here by moods-entry.js -->
+				<h1 class="welcome">Welcome <span class="user-name"></span></h1>
+			</div>
+			<br>
+			<form id="mood-form">
 				<div class="row">
-					<!-- User email is added here by moods-entry.js -->
-					<h1>Welcome <span class="user-name"></span></h1>
+					<div class="ui form" id="mood-form">
+						<input type="hidden" id="user" />
+
+						<div class="ui calendar" id="calender">
+							<div class="ui input left icon">
+								<i class="calendar icon"></i>
+								<input type="text" id="entry-date" placeholder="Date" />
+							</div>
+						</div>
+					</div>
 				</div>
-				<br />
-				<form id="mood-form">
+				<div class="ui hidden divider"></div>
+				<h1>What are you feeling?</h1>
+				<!--excited row-->
+				<fieldset class="emotion">
 					<div class="row">
-						<div class="ui form" id="mood-form">
-							<input type="hidden" id="user" />
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="checkbox" />
+								<label><img class="ui tiny image"
+										src="https://cdn1.iconfinder.com/data/icons/emoticons-8/24/Laughing-512.png" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="ui segment">
+							<div class="ui labeled range" id="excitedRange">
+								<ul class="labels">
+									<li class="label">Excited</li>
+									<li class="label">Energetic</li>
+									<li class="label">Bouncy</li>
+									<li class="label">Nervous</li>
+									<li class="label">Perky</li>
+									<li class="label">Motivated</li>
+									<li class="label">Focused</li>
+									<li class="label">Centered</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="ui hidden divider"></div>
+				</fieldset>
+				<!--happy row-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://cdn2.iconfinder.com/data/icons/conceptual-mixed-2/50/satisfied-pleased-face-avatar-emoticon-512.png"/></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="ui segment">
+							<div class="ui labeled range" id="happyRange">
+								<ul class="labels">
+									<li class="label">Contented</li>
+									<li class="label">Glad</li>
+									<li class="label">Satisfied</li>
+									<li class="label">Optimistic</li>
+									<li class="label">Pleased</li>
+									<li class="label">Joyful</li>
+									<li class="label">Delighted</li>
+									<li class="label">Mirthful</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="ui hidden divider"></div>
+				</fieldset>
 
-							<div class="ui calendar" id="calendar">
-								<div class="ui input left icon">
-									<i class="calendar icon"></i>
-									<input type="text" id="entry-date" placeholder="Date" />
+				<!--sad row-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://icons.iconarchive.com/icons/icons8/ios7/256/Messaging-Cry-icon.png" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="ui segment">
+							<div class="ui labeled range" id="sadRange">
+								<ul class="labels">
+									<li class="label">Down</li>
+									<li class="label">Dejected</li>
+									<li class="label">Depressed</li>
+									<li class="label">Heartbroken</li>
+									<li class="label">Blue</li>
+									<li class="label">Unhappy</li>
+									<li class="label">Downhearted</li>
+									<li class="label">Demoralized</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="ui hidden divider"></div>
+				</fieldset>
+
+				<!--Angry-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://cdn4.iconfinder.com/data/icons/smiley-vol-3-2/48/101-512.png" /></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="ui segment">
+								<div class="ui labeled range" id="angryRange">
+									<ul class="labels">
+										<li class="label">Irratated</li>
+										<li class="label">Resentful</li>
+										<li class="label">Mad</li>
+										<li class="label">Furious</li>
+										<li class="label">Upset</li>
+										<li class="label">Cross</li>
+										<li class="label">Annoyed</li>
+										<li class="label">Vexed</li>
+									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="ui hidden divider"></div>
-					<h1>What are you feeling?</h1>
-					<!--excited row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="checkbox" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-surprise-expression-clipart.jpg"
-									/></label>
-								</div>
+				</fieldset>
+				<!--Scared row-->
+				<fieldset class="emotion">
+					<div class="row">
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="example" />
+								<label><img class="ui tiny image"
+										src="https://lh3.googleusercontent.com/proxy/rkkqdudHiefAQLOt1Qv5dcRcXSMLcd8zN5agzlkvJZFNb5HV_GDOH9oQbjbOAUOAVr4ShsOeg8eOgRHlhudQDA8Z3YvXA34BLrZaxo9Z-wLTKJeAZt-2QfLESdMfzWhSwmon7-sB80lnIiLNdbxFHJEt15Lyz9tMFtxH2Q0Wki6S3xBrZ5q8" /></label>
 							</div>
 						</div>
 						<div class="row">
 							<div class="ui segment">
-								<div class="ui labeled range" id="excitedRange">
+								<div class="ui labeled range" id="scaredRange">
 									<ul class="labels">
-										<li class="label">Excited</li>
-										<li class="label">Energetic</li>
-										<li class="label">Bouncy</li>
-										<li class="label">Nervous</li>
-										<li class="label">Perky</li>
-										<li class="label">Motivated</li>
-										<li class="label">Focused</li>
-										<li class="label">Centered</li>
+										<li class="label">Tense</li>
+										<li class="label">Anxious</li>
+										<li class="label">Restless</li>
+										<li class="label">Uneasy</li>
+										<li class="label">Frightened</li>
+										<li class="label">Panic-Stricken</li>
+										<li class="label">Afraid</li>
+										<li class="label">Horrified</li>
 									</ul>
 								</div>
 							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-					<!--happy row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-happy-expression-clipart-2.jpg"
-									/></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="ui segment">
-								<div class="ui labeled range" id="happyRange">
-									<ul class="labels">
-										<li class="label">Contented</li>
-										<li class="label">Glad</li>
-										<li class="label">Satisfied</li>
-										<li class="label">Optimistic</li>
-										<li class="label">Pleased</li>
-										<li class="label">Joyful</li>
-										<li class="label">Delighted</li>
-										<li class="label">Mirthful</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-
-					<!--sad row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-crying-expression-clipart.jpg"
-									/></label>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="ui segment">
-								<div class="ui labeled range" id="sadRange">
-									<ul class="labels">
-										<li class="label">Down</li>
-										<li class="label">Dejected</li>
-										<li class="label">Depressed</li>
-										<li class="label">Heartbroken</li>
-										<li class="label">Blue</li>
-										<li class="label">Unhappy</li>
-										<li class="label">Downhearted</li>
-										<li class="label">Demoralized</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-
-					<!--Angry-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-furious-expression-clipart.jpg"
-									/></label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="ui segment">
-									<div class="ui labeled range" id="angryRange">
-										<ul class="labels">
-											<li class="label">Irratated</li>
-											<li class="label">Resentful</li>
-											<li class="label">Mad</li>
-											<li class="label">Furious</li>
-											<li class="label">Upset</li>
-											<li class="label">Cross</li>
-											<li class="label">Annoyed</li>
-											<li class="label">Vexed</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-					<!--Scared row-->
-					<fieldset class="emotion">
-						<div class="row">
-							<div class="column">
-								<div class="ui checkbox">
-									<input type="checkbox" name="example" />
-									<label
-										><img
-											class="ui tiny image"
-											src="https://classroomclipart.com/images/gallery/Clipart/Emotions/TN_smiley-face-character-frightened-expression-clipart-2.jpg"
-									/></label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="ui segment">
-									<div class="ui labeled range" id="scaredRange">
-										<ul class="labels">
-											<li class="label">Tense</li>
-											<li class="label">Anxious</li>
-											<li class="label">Restless</li>
-											<li class="label">Uneasy</li>
-											<li class="label">Frightened</li>
-											<li class="label">Panic-Stricken</li>
-											<li class="label">Afraid</li>
-											<li class="label">Horrified</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="ui hidden divider"></div>
-					</fieldset>
-					<!--text feild-->
-					<div class="ui form">
-						<div class="field">
-							<h1>How was your day?</h1>
-							<textarea id="journal"></textarea>
 						</div>
 					</div>
-
 					<div class="ui hidden divider"></div>
-					<button type="submit" class="ui primary button">
-						Save
-					</button>
-				</form>
-			</div>
+				</fieldset>
+				<!--text feild-->
+				<div class="ui form">
+					<div class="field">
+						<h1>How was your day?</h1>
+						<textarea id="journal"></textarea>
+					</div>
+				</div>
+
+				<div class="ui hidden divider"></div>
+				<div style="display: none" id="alert" class="ui negative message" role="alert"></div>
+				<button type="submit" class="ui inverted button">
+					Save
+				</button>
+			</form>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>

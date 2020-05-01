@@ -17,27 +17,30 @@
     rel="stylesheet" type="text/css" />
   <script
     src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
-  <link href="stylesheets/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Merienda:wght@700&display=swap" rel="stylesheet">  <link href="stylesheets/style.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/login.js"></script>
+
 </head>
 
-<body>
+<body class="home">
 
   <div class="ui two column centered grid">
-    <div class="seven wide column center">
-      <h2>Login Form</h2>
-      <!--new form-->
-      <form class="ui form login">
+    <div class="seven wide computer sixteen wide mobile eight wide tablet column center">
+     
+      <form class="ui form inverted login">
+        <h1 class="title">MOODLE</h1>
+        <br>
+        <h3>Login Form</h3>
         <div class="field">
-          <label for="exampleInputEmail1">Email address</label>
+          <label id="label" for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" id="email-input" placeholder="Email">
         </div>
         <div class="field">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" id="password-input" placeholder="Password">
         </div>
-        <button class="ui button" type="submit">Login</button>
+        <button class="ui inverted button" type="submit">Login</button>
       </form>
 
       <br />
